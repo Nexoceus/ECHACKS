@@ -1,3 +1,9 @@
+
+## Create your own reactjs app and copy the src files over. NPM module directories are not included in this GitHub repository.
+
+
+
+---
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
