@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.*;
 
 @SpringBootApplication
 @RestController
-public class ParserApplication {
+public class DemoApplication {
   public static void main(String[] args) {
-    SpringApplication.run(ParserApplication.class, args);
+    SpringApplication.run(DemoApplication.class, args);
   }
 
   @GetMapping("/")
