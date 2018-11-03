@@ -19,7 +19,7 @@ public class DataParserController {
     }
 
     @RequestMapping(
-            value = "/process",
+            value = "/home",
             method = RequestMethod.GET)
 
     public String process(String hello) {
