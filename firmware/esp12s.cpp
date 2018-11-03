@@ -81,21 +81,21 @@ void postData(){
               }
             }
             HTTPClient http;
-            payload = "{\"o2\":"+String(EofP[0])+",\"co2\":"+String(EofP[1])+",\"voc\":"+String(EofP[2])+",\"temperature\":";
-            payload = payload+String(EofP[3])+",\"humidity\":"+String(EofP[4])+",\"latitude\":"+String(EofP[5]);
-            payload = payload+",\"longitude\":"+String(EofP[6])+",\"elevation\":"+String(EofP[7])+",\"deviceID\":"+String(EofP[8])+"}";
+            payload = "{\"o2\":\""+String(EofP[0])+"\",\"co2\":\""+String(EofP[1])+"\",\"voc\":\""+String(EofP[2])+"\",\"temperature\":\"";
+            payload = payload+String(EofP[3])+"\",\"humidity\":\""+String(EofP[4])+"\",\"latitude\":\""+String(EofP[5]);
+            payload = payload+"\",\"longitude\":\""+String(EofP[6])+"\",\"elevation\":\""+String(EofP[7])+"\",\"deviceID\":\""+String(EofP[8])+"\"}";
             
-            Serial.println(payload);
-            http.begin("http://oxydb.com/server/scripts/parse.php");      
-            http.header("POST / HTTP/1.1");
-            http.header("Host: http://oxydb.com/server/scripts/parse.php");
-            http.header("Accept: */*");
-            http.header("Content-Type: application/x-www-form-urlencoded");
-            http.header("Content-Length : "+payload.length());
-            int httpCode = http.POST(payload);   
-            String payload = http.getString();                                        
-            Serial.println(httpCode);
-            Serial.println(payload);    
+           http.header("Content-Type: application/json");
+           http.begin("http://optimum-parity-221406.appspot.com/process");
+           http.addHeader("Content-Type", "application/json");
+         
+           int httpCode = http.POST(payload);   
+           String payload = http.getString();           
+         
+           Serial.println(httpCode);   //Print HTTP return code
+           Serial.println(payload);    //Print request response payload
+         
+           http.end(); 
             digitalWrite(D8, HIGH);
             delay(100);
             digitalWrite(D8, LOW);
