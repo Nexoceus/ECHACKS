@@ -83,5 +83,20 @@ public class DeviceData {
     public void setDeviceID(double deviceID) {
         this.deviceID = deviceID;
     }
+
+    @Override
+    public String toString() {
+
+        return                
+                String.valueOf(o2) + System.lineSeparator()
+                        + String.valueOf(co2) + System.lineSeparator()
+                        + String.valueOf(voc) + System.lineSeparator()
+                        + String.valueOf(temperature) + System.lineSeparator()
+                        + String.valueOf(humidity) + System.lineSeparator()
+                        + String.valueOf(latitude) + System.lineSeparator()
+                        + String.valueOf(longitude) + System.lineSeparator()
+                        + String.valueOf(elevation) + System.lineSeparator()
+                        + String.valueOf(deviceID) + System.lineSeparator();
+    }
 }
 
