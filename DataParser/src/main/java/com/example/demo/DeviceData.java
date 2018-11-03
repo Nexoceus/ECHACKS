@@ -2,101 +2,97 @@ package com.example.demo;
 
 public class DeviceData {
 
-    private double o2;
-    private double co2;
-    private double voc;
-    private double temperature;
-    private double humidity;
-    private double latitude;
-    private double longitude;
-    private double elevation;
-    private double deviceID;
+    private String o2;
+    private String co2;
+    private String voc;
+    private String temperature;
+    private String humidity;
+    private String latitude;
+    private String longitude;
+    private String elevation;
+    private String deviceID;
 
-    public double getO2() {
+    public String getO2() {
         return o2;
     }
 
-    public void setO2(double o2) {
+    public void setO2(String o2) {
         this.o2 = o2;
     }
 
-    public double getCo2() {
+    public String getCo2() {
         return co2;
     }
 
-    public void setCo2(double co2) {
+    public void setCo2(String co2) {
         this.co2 = co2;
     }
 
-    public double getVoc() {
+    public String getVoc() {
         return voc;
     }
 
-    public void setVoc(double voc) {
+    public void setVoc(String voc) {
         this.voc = voc;
     }
 
-    public double getTemperature() {
+    public String getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(double temperature) {
+    public void setTemperature(String temperature) {
         this.temperature = temperature;
     }
 
-    public double getHumidity() {
+    public String getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(double humidity) {
+    public void setHumidity(String humidity) {
         this.humidity = humidity;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public double getElevation() {
+    public String getElevation() {
         return elevation;
     }
 
-    public void setElevation(double elevation) {
+    public void setElevation(String elevation) {
         this.elevation = elevation;
     }
 
-    public double getDeviceID() {
+    public String getDeviceID() {
         return deviceID;
     }
 
-    public void setDeviceID(double deviceID) {
+    public void setDeviceID(String deviceID) {
         this.deviceID = deviceID;
     }
 
     @Override
     public String toString() {
-
-        return                
-                String.valueOf(o2) + System.lineSeparator()
-                        + String.valueOf(co2) + System.lineSeparator()
-                        + String.valueOf(voc) + System.lineSeparator()
-                        + String.valueOf(temperature) + System.lineSeparator()
-                        + String.valueOf(humidity) + System.lineSeparator()
-                        + String.valueOf(latitude) + System.lineSeparator()
-                        + String.valueOf(longitude) + System.lineSeparator()
-                        + String.valueOf(elevation) + System.lineSeparator()
-                        + String.valueOf(deviceID) + System.lineSeparator();
+        
+        return o2 + System.lineSeparator() + co2 + System.lineSeparator() +
+                voc + System.lineSeparator() + temperature + System.lineSeparator() + humidity + System.lineSeparator() +
+                latitude + System.lineSeparator() +
+                longitude + System.lineSeparator() +
+                elevation + System.lineSeparator() +
+                deviceID + System.lineSeparator();
     }
 }
 
