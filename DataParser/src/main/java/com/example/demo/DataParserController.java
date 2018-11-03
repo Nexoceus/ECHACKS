@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import java.util.ArrayList;
+import java.sql.Timestamp;
 
 
 @RestController
@@ -20,7 +20,9 @@ public class DataParserController {
 
     public void process(@RequestBody DeviceData deviceData) throws Exception {
 
-        dataString += (deviceData.toString() + System.lineSeparator());
+        if (dataString == null)
+            dataString = (deviceData.toString() + System.lineSeparator()+ (System.currentTimeMillis()));
+        dataString += (deviceData.toString() + System.lineSeparator() + (System.currentTimeMillis()));
 //        arrayList.add(deviceData.toString());
 //        return deviceData.toString();
     }
@@ -30,7 +32,6 @@ public class DataParserController {
             method = RequestMethod.GET)
 
     public String process(String hello) {
-//        return "HELLO WORLD!";
         return dataString;
     }
 }
