@@ -10,16 +10,19 @@ import java.util.ArrayList;
 @RestController
 public class DataParserController {
 
-    public ArrayList arrayList = new ArrayList();
+//    public ArrayList arrayList = new ArrayList<>();
+    public String dataString;
 
     @RequestMapping(
             value = "/process",
             method = RequestMethod.POST,
             consumes = "application/json")
 
-    public String process(@RequestBody DeviceData deviceData) throws Exception {
-        arrayList.add(deviceData.toString());
-        return deviceData.toString();
+    public void process(@RequestBody DeviceData deviceData) throws Exception {
+
+        dataString += (deviceData.toString() + System.lineSeparator());
+//        arrayList.add(deviceData.toString());
+//        return deviceData.toString();
     }
 
     @RequestMapping(
@@ -28,6 +31,6 @@ public class DataParserController {
 
     public String process(String hello) {
 //        return "HELLO WORLD!";
-        return arrayList.toString();
+        return dataString;
     }
 }

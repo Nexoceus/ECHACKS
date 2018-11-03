@@ -87,12 +87,14 @@ public class DeviceData {
     @Override
     public String toString() {
         
-        return o2 + System.lineSeparator() + co2 + System.lineSeparator() +
-                voc + System.lineSeparator() + temperature + System.lineSeparator() + humidity + System.lineSeparator() +
-                latitude + System.lineSeparator() +
-                longitude + System.lineSeparator() +
-                elevation + System.lineSeparator() +
-                deviceID + System.lineSeparator();
+        return
+                ("o2: ") + o2 + System.lineSeparator() + ("co2: ") + co2 + System.lineSeparator() +
+                ("voc: ") +voc + System.lineSeparator() + ("temperature: ") + temperature +
+                System.lineSeparator() + ("humidity: ") + humidity + System.lineSeparator() +
+                        ("latitude: ") + latitude + System.lineSeparator() +
+                        ("longitude: ") +longitude + System.lineSeparator() +
+                        ("elevation: ") +elevation + System.lineSeparator() +
+                        ("deviceID: ") +deviceID + System.lineSeparator();
     }
 }
 
