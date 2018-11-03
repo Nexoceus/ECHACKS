@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.echacks.DataParser.DataParserApplicationTests
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.541 s - in com.echacks.DataParser.DataParserApplicationTests
