@@ -8,18 +8,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Map;
+
 
 @RestController
 public class DataParserController {
 
-//    @RequestMapping(value = "/submitdata", method = RequestMethod.POST)
-//    public String dataReceptionResponse() {
-////        return "hello world!";
-//        Req
-//    }
+	@RequestMapping(
+    value = "/process", 
+    method = RequestMethod.POST,
+    consumes = "application/json")
+public String process(@RequestBody DeviceData deviceData) throws Exception {
 
-    @PostMapping("/request")
-    public String postController(@RequestBody DeviceData deviceData) {
-        return deviceData.toString();
-    }
+  return deviceData.toString();
+
+}
+
 }

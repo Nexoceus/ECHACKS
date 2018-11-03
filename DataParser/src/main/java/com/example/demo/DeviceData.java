@@ -2,9 +2,9 @@ package com.example.demo;
 
 public class DeviceData {
 
-    private double o2val;
-    private double co2val;
-    private double vocval;
+    private double o2;
+    private double co2;
+    private double voc;
     private double temperature;
     private double humidity;
     private double latitude;
@@ -12,28 +12,28 @@ public class DeviceData {
     private double elevation;
     private double deviceID;
 
-    public double getO2val() {
-        return o2val;
+    public double getO2() {
+        return o2;
     }
 
-    public void setO2val(double o2val) {
-        this.o2val = o2val;
+    public void setO2(double o2) {
+        this.o2 = o2;
     }
 
-    public double getCo2val() {
-        return co2val;
+    public double getCo2() {
+        return co2;
     }
 
-    public void setCo2val(double co2val) {
-        this.co2val = co2val;
+    public void setCo2(double co2) {
+        this.co2 = co2;
     }
 
-    public double getVocval() {
-        return vocval;
+    public double getVoc() {
+        return voc;
     }
 
-    public void setVocval(double vocval) {
-        this.vocval = vocval;
+    public void setVoc(double voc) {
+        this.voc = voc;
     }
 
     public double getTemperature() {
@@ -84,3 +84,4 @@ public class DeviceData {
         this.deviceID = deviceID;
     }
 }
+
