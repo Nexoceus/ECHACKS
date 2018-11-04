@@ -22,17 +22,30 @@ app.get('/', (req, res) => {
 
 app.post('/process', function(req, res) {
 
-    var o2 = req.body.o2;
-    var co2 = req.body.co2;
-    var voc = req.body.voc;
-    var temperature = req.body.temperature;
-    var humidity = req.body.humidity;
-    var latitude = req.body.latitude;
-    var longitude = req.body.longitude;
-    var elevation = req.body.elevation;
-    var deviceID = req.body.deviceID;
+    var o2_var = req.body.o2;
+    var co2_var = req.body.co2;
+    var voc_var = req.body.voc;
+    var temperature_var = req.body.temperature;
+    var humidity_var = req.body.humidity;
+    var latitude_var = req.body.latitude;
+    var longitude_var = req.body.longitude;
+    var elevation_var = req.body.elevation;
+    var deviceID_var = req.body.deviceID;
 
     knex('entries').insert(o2, co2, voc, temperature, humidity, latitude, longitude, elevation);
+
+    knex('entries').insert(
+        {o2: o2_var},
+        {co2: co2_var},
+        {voc: voc_var},
+        {temperature: temperature_var},
+        {humidity: humidity_var},
+        {latitude: latitude_var},
+        {longitude: longitude_var },
+        {elevation: elevation_var }
+    )
+
+
 
     res.status(200).send();
 
