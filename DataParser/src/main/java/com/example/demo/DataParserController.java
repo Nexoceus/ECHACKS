@@ -14,8 +14,8 @@ import java.text.SimpleDateFormat;
 public class DataParserController {
 //
 //
-    @Autowired
-    public JdbcTemplate jdbcTemplate;
+   // @Autowired
+  //  public JdbcTemplate jdbcTemplate;
 //
 
 
@@ -37,7 +37,7 @@ public class DataParserController {
             dataString += (deviceData.toString() + System.lineSeparator() +  new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
         }
 
-        jdbcTemplate.execute("show tables;");
+//        jdbcTemplate.execute("show tables;");
         return "success!";
     }
 
