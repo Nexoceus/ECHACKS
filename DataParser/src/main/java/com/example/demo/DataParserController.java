@@ -31,9 +31,9 @@ public class DataParserController {
 
             Class.forName("com.mysql.jdbc.Driver");
             Connection conn = null;
-            conn = DriverManager.getConnection("jdbc:mysql://google/petclinic?cloudSqlInstance=instance-1=com.google.cloud.sql.mysql.SocketFactory","root", "password");
+            conn = DriverManager.getConnection("jdbc:mysql://google/petclinic?cloudSqlInstance=instance-1&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=password&useSSL=false\n");
             conn.close();
-
+//            "jdbc:mysql://google/petclinic?cloudSqlInstance=instance-1&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=password&useSSL=false\n"
             once = true;
         }
 
