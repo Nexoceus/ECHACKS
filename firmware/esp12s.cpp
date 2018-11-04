@@ -1,6 +1,7 @@
 //includes
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
+
 #include <Wire.h>
 #include <LiquidCrystal_I2C.h>
 
@@ -9,13 +10,13 @@ LiquidCrystal_I2C lcd(0x3F, 2, 1, 0, 4, 5, 6, 7, 3, POSITIVE);
 
 //setup once
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(115200);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
   lcd.begin(16, 2);
   lcd.print("...");
   pinMode(D8, OUTPUT);
   
   //now check if GPS has location
-  bool validpayload = false;
+  /*bool validpayload = false;
   String payload ="";
   while(validpayload==false){
     delay(1000);
@@ -33,36 +34,31 @@ void setup() {
       validpayload = true;
       lcd.clear();
      }
-   }
-
-//get wifi vars from serial, parse them, store them
-  while(WiFi.status() != WL_CONNECTED){
-    Serial.println();
+   }*/
+    while(!Serial){
+      delay(50);
+    }
     char* u = "echacks";
     char* p = "Fall2020";
     Serial.print("Connecting to ");
     Serial.println(u);
     Serial.println(p);
+    WiFi.mode(WIFI_STA);
     WiFi.begin(u, p);
+   
+    while (WiFi.status() != WL_CONNECTED) {
+      delay(2000);
+      Serial.print(".");
+      lcd.clear();
+      lcd.print("connect...");
+     }
 
-            //print dots while connection pending
-            while (WiFi.status() != WL_CONNECTED) {
-              delay(2000);
-              Serial.print(".");
-              lcd.clear();
-              lcd.print("connect...");
-            }
-
-            
-}
-          //Connection to WiFi has been established
-          Serial.println("");
-          Serial.println("WiFi connected");
-          Serial.println(WiFi.localIP());
-          digitalWrite(D8, HIGH);
-          lcd.clear();
-          lcd.print("wifi [OK]");
-
+     Serial.println("");
+     Serial.println("WiFi connected");
+     Serial.println(WiFi.localIP());
+     digitalWrite(D8, HIGH);
+     lcd.clear();
+     lcd.print("wifi [OK]");
 }
 
 void postData(){
@@ -82,8 +78,7 @@ void postData(){
             }
             HTTPClient http;
             payload = "{\"o2\":\""+String(EofP[0])+"\",\"co2\":\""+String(EofP[1])+"\",\"voc\":\""+String(EofP[2])+"\",\"temperature\":\"";
-            payload = payload+String(EofP[3])+"\",\"humidity\":\""+String(EofP[4])+"\",\"latitude\":\""+String(EofP[5]);
-            payload = payload+"\",\"longitude\":\""+String(EofP[6])+"\",\"elevation\":\""+String(EofP[7])+"\",\"deviceID\":\""+String(EofP[8])+"\"}";
+            payload = payload+String(EofP[3])+"\",\"humidity\":\""+String(EofP[4])+"\",\"deviceID\":\""+String(EofP[8])+"\"}";
             
            http.header("Content-Type: application/json");
            http.begin("http://optimum-parity-221406.appspot.com/process");
@@ -94,10 +89,9 @@ void postData(){
          
            Serial.println(httpCode);   //Print HTTP return code
            Serial.println(payload);    //Print request response payload
-         
-           http.end(); 
+       
             digitalWrite(D8, HIGH);
-            delay(100);
+            delay(500);
             digitalWrite(D8, LOW);
             http.end();  
     }
@@ -105,5 +99,5 @@ void postData(){
 
 void loop(){
  postData();
- delay(1000);
+ delay(4500);
 }
