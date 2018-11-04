@@ -27,25 +27,25 @@ public class DataParserController {
 
     public String process(@RequestBody DeviceData deviceData) throws Exception {
 
-        if (!once) {
+//        if (!once) {
 
-            Class.forName("com.mysql.jdbc.Driver");
+         //   Class.forName("com.mysql.jdbc.Driver");
 
-            String jdbcUrl = String.format(
-                    "jdbc:mysql://google/%s?cloudSqlInstance=%s&"
-                            + "socketFactory=com.google.cloud.sql.mysql.SocketFactory",
-                    "petclinic",
-                    "optimum-parity-221406:us-central1:instance-1");
+        //    String jdbcUrl = String.format(
+                   // "jdbc:mysql://google/%s?cloudSqlInstance=%s&"
+                      //      + "socketFactory=com.google.cloud.sql.mysql.SocketFactory",
+                 //   "petclinic",
+                 //   "optimum-parity-221406:us-central1:instance-1");
 
-//            Connection connection =
+//        //    Connection connection =
 
 
-            try (Connection conn = DriverManager.getConnection(jdbcUrl, "root", "password")) {
-                
-            }
+         //   try (Connection conn = DriverManager.getConnection(jdbcUrl, "root", "password")) {
+         //       
+          //  }
 //            "jdbc:mysql://google/petclinic?cloudSqlInstance=instance-1&socketFactory=com.google.cloud.sql.mysql.SocketFactory&user=root&password=password&useSSL=false\n"
-            once = true;
-        }
+          //  once = true;
+     //   }
 
         if (dataString == null)
             dataString = (deviceData.toString() + System.lineSeparator()+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
