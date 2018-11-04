@@ -1,14 +1,16 @@
 const express = require('express');
 const app = express();
+const Knex = require('knex');
+
 app.use(express.json());
 
 const config = {
   user: 'root',
   password: 'password',
-  database: 'petclinic'
-};
+  database: 'petclinic',
+  socketPath: '/cloudsql/$optimum-parity-221407:us-central1:instance-1'
+	}
 
-config.socketPath: '/cloudsql/$optimum-parity-221406:us-central1:instance-1';
 
 // Connect to the database
 const knex = Knex({
@@ -22,6 +24,8 @@ app.get('/', (req, res) => {
 
 app.post('/process', function(req, res) {
 
+	console.log('start');
+
     var o2_var = req.body.o2;
     var co2_var = req.body.co2;
     var voc_var = req.body.voc;
@@ -31,8 +35,6 @@ app.post('/process', function(req, res) {
     var longitude_var = req.body.longitude;
     var elevation_var = req.body.elevation;
     var deviceID_var = req.body.deviceID;
-
-    knex('entries').insert(o2, co2, voc, temperature, humidity, latitude, longitude, elevation);
 
     knex('entries').insert(
         {o2: o2_var},
@@ -46,7 +48,7 @@ app.post('/process', function(req, res) {
     )
 
 
-
+	console.log('done');
     res.status(200).send();
 
 });

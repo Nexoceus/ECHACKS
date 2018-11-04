@@ -20,6 +20,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>LEMME EAT YOUR BEANS</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>LEMME EAT YOUR BEANS</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>LEMME EAT YOUR BEANS</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

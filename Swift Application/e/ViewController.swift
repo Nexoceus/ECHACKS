@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, CLLocationManagerDelegate {
     
     var locationManager:CLLocationManager!
     var coords = [0.0,0.0,0.0]
@@ -24,13 +24,11 @@ class ViewController: UIViewController {
     
     func determineMyCurrentLocation() {
         locationManager = CLLocationManager()
+       
         locationManager.delegate = self as? CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager.startUpdatingLocation()
-        }
+        locationManager.startUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -38,6 +36,7 @@ class ViewController: UIViewController {
         coords[0] = userLocation.coordinate.longitude
         coords[1] = userLocation.coordinate.latitude
         coords[2] = userLocation.altitude
+        print("you moved")
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
