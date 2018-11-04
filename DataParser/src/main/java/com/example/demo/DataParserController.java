@@ -6,18 +6,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 
 
 @RestController
 public class DataParserController {
-//
-//
-   // @Autowired
-  //  public JdbcTemplate jdbcTemplate;
-//
 
+    public boolean once = false;
 
     public String dataString;
 
@@ -29,7 +27,15 @@ public class DataParserController {
 
     public String process(@RequestBody DeviceData deviceData) throws Exception {
 
+        if (!once) {
 
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection conn = null;
+            conn = DriverManager.getConnection("jdbc:mysql://google/petclinic?cloudSqlInstance=instance-1=com.google.cloud.sql.mysql.SocketFactory","root", "password");
+            conn.close();
+
+            once = true;
+        }
 
         if (dataString == null)
             dataString = (deviceData.toString() + System.lineSeparator()+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
@@ -37,7 +43,6 @@ public class DataParserController {
             dataString += (deviceData.toString() + System.lineSeparator() +  new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
         }
 
-//        jdbcTemplate.execute("show tables;");
         return "success!";
     }
 
