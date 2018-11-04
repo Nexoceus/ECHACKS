@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -10,22 +12,33 @@ import java.text.SimpleDateFormat;
 
 @RestController
 public class DataParserController {
+//
+//
+    @Autowired
+    public JdbcTemplate jdbcTemplate;
+//
 
-//    public ArrayList arrayList = new ArrayList<>();
+
     public String dataString;
+
 
     @RequestMapping(
             value = "/process",
             method = RequestMethod.POST,
             consumes = "application/json")
 
-    public void process(@RequestBody DeviceData deviceData) throws Exception {
+    public String process(@RequestBody DeviceData deviceData) throws Exception {
+
+
 
         if (dataString == null)
             dataString = (deviceData.toString() + System.lineSeparator()+ new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
-        dataString += (deviceData.toString() + System.lineSeparator() +  new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
-//        arrayList.add(deviceData.toString());
-//        return deviceData.toString();
+        else {
+            dataString += (deviceData.toString() + System.lineSeparator() +  new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date()));
+        }
+
+        jdbcTemplate.execute("show tables;");
+        return "success!";
     }
 
     @RequestMapping(
