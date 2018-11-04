@@ -32,6 +32,8 @@ app.post('/process', function(req, res) {
     var elevation = req.body.elevation;
     var deviceID = req.body.deviceID;
 
+    knex('entries').insert(o2, co2, voc, temperature, humidity, latitude, longitude, elevation);
+
     res.status(200).send();
 
 });
@@ -42,3 +44,21 @@ app.listen(PORT, () => {
   console.log(`App listening on port ${PORT}`);
   console.log('Press Ctrl+C to quit.');
 });
+
+// CREATE TABLE IF NOT EXISTS entries (
+//      o2 DECIMAL,
+//      co2 DECIMAL,
+//      voc DECIMAL,
+//      temperature DECIMAL,
+//      humidity DECIMAL,
+//      latitude DECIMAL,
+//      longitude DECIMAL,
+//      elevation DECIMAL,
+//      time TIMESTAMP  DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+// );
+//
+// insert into entries (o2, co2, voc, temperature, humidity, latitude, longitude, elevation)
+// values (1,1,1,1,1,1,1,1);
+//
+// INSERT INTO Customer (FirstName, LastName)
+// VALUES ('Anita', 'Coats')
